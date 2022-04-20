@@ -13,7 +13,7 @@ Score and Level:
     Score: score starts at zero. Score increases as the player shoot down the antagonists.
 
     Level: level starts at Medium and remains Medium when the score is below 150. As
-        the score reaches 150 or above level is changed to Hard.
+        the score reaches 150 or above, level is changed to Hard.
 
 Player:
     
