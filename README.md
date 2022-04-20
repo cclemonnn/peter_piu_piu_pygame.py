@@ -36,4 +36,4 @@ Click Exit on top right of the game screen to exit game.
 
 ---------------
 ### Set Up
-Run the main program and the game should start.
+Install pygame and run the main program and the game should start.
