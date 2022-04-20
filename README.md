@@ -24,7 +24,7 @@ Antagonists:
 
     Meteor: +10 points when shot. Appears in Medium and Hard Level.
     UFO: +30 points when shot. Appears in Medium and Hard Level.
-    Monster: +50 points whne shot. Appears in Hard Level.
+    Monster: +50 points when shot. Appears in Hard Level.
 
 ----------------
 ### Game Control
