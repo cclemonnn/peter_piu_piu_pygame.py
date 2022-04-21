@@ -32,6 +32,8 @@ Antagonists:
 Left or Right key to move the spaceship left or right.
 Press space to shoot. Consecutive press of space key leads to consecutive shooting.
 
+Press 'R' to restart the game once the game is over.
+
 Click Exit on top right of the game screen to exit game.
 
 ---------------
