@@ -10,10 +10,10 @@ shooting game with a world that is greater than the game screen.
 ### Game Components:
 Score and Level:
 
-    Score: score starts at zero. Score increases as the player shoot down the antagonists.
+    Score: score starts at zero. Score increases as the player shoots down the antagonists.
 
     Level: level starts at Medium and remains Medium when the score is below 150. As
-        the score reaches 150 or above level is changed to Hard.
+        the score reaches 150 or above, level is changed to Hard.
 
 Player:
     
@@ -24,16 +24,19 @@ Antagonists:
 
     Meteor: +10 points when shot. Appears in Medium and Hard Level.
     UFO: +30 points when shot. Appears in Medium and Hard Level.
-    Monster: +50 points whne shot. Appears in Hard Level.
+    Monster: +50 points when shot. Appears in Hard Level.
 
 ----------------
 ### Game Control
 
 Left or Right key to move the spaceship left or right.
+
 Press space to shoot. Consecutive press of space key leads to consecutive shooting.
+
+Press 'R' to restart the game once the game is over.
 
 Click Exit on top right of the game screen to exit game.
 
 ---------------
 ### Set Up
-Run the main program and the game should start.
+Install pygame and run the main program and the game should start.
