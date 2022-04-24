@@ -1,8 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-from final_project import settings
-
+import settings
 """background of the game"""
 
 

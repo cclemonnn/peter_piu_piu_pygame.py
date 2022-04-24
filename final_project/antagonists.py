@@ -3,8 +3,7 @@ import random
 import pygame
 from pygame.sprite import Sprite
 
-from final_project import settings
-
+import settings
 """antagonists: meteor, ufo and monster"""
 
 

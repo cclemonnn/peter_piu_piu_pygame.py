@@ -6,12 +6,12 @@ from pygame.sprite import Group, groupcollide
 from pygame.time import Clock
 
 import settings
-from final_project.antagonists import Meteor, UFO, Monster
-from final_project.explosion import Explosion
-from final_project.ground import Ground
-from final_project.missile import Missile
-from final_project.player import Player
-from final_project.viewport import Viewport
+from antagonists import Meteor, UFO, Monster
+from explosion import Explosion
+from ground import Ground
+from missile import Missile
+from player import Player
+from viewport import Viewport
 
 # the main game pppp
 

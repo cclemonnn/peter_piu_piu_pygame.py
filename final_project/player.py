@@ -3,8 +3,7 @@ from pygame import key
 
 from pygame.sprite import Sprite
 
-from final_project import settings
-
+import settings
 """spaceship controlled by the player"""
 
 
