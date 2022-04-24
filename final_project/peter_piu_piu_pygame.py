@@ -235,7 +235,7 @@ class Game:
 
     def show_instruction(self):
         font = pygame.font.Font(self.font_arial, 20)
-        instruction = font.render("Press left or right key to move. Press space to shoot.", True, (255, 255, 255))
+        instruction = font.render("Press left or right key to move. Press space to shoot.", True, settings.WHITE)
         instruction_rect = instruction.get_rect()
         instruction_rect.left = 10
         instruction_rect.top = 10
@@ -243,7 +243,7 @@ class Game:
 
     def show_score(self):
         font = pygame.font.Font(self.font_arial, 30)
-        score = font.render("Score: " + str(self.score), True, (0, 255, 255))
+        score = font.render("Score: " + str(self.score), True, settings.AQUA)
         score_rect = score.get_rect()
         score_rect.left = 10
         score_rect.bottom = 70
@@ -252,9 +252,9 @@ class Game:
     def show_level(self):
         font = pygame.font.Font(self.font_arial, 30)
         if self.score < 150:
-            level = font.render("Level: Medium (Score < 150)", True, (173, 255, 47))
+            level = font.render("Level: Medium (Score < 150)", True, settings.GREEN_YELLOW)
         else:
-            level = font.render("Level: Hard (Score >= 150)", True, (255,69,0))
+            level = font.render("Level: Hard (Score >= 150)", True, settings.ORANGE_RED)
         level_rect = level.get_rect()
         level_rect.left = 10
         level_rect.top = 80
@@ -262,7 +262,7 @@ class Game:
 
     def show_pppp(self):
         font = pygame.font.Font(self.font_bold, 100)
-        game_over = font.render("PETER PIU PIU PYGAME", False, (127,255,212))
+        game_over = font.render("PETER PIU PIU PYGAME", False, settings.AQUA_MARINE)
         game_over_rect = game_over.get_rect()
         game_over_rect.centerx = settings.WINDOW_WIDTH / 2
         game_over_rect.bottom = settings.WINDOW_HEIGHT / 2
@@ -270,7 +270,7 @@ class Game:
 
     def show_start_at_medium(self):
         font = pygame.font.Font(self.font_bold, 30)
-        restart = font.render("Press \"1\" to start the game at Medium Level", True, (173, 255, 47))
+        restart = font.render("Press \"1\" to start the game at Medium Level", True, settings.GREEN_YELLOW)
         restart_rect = restart.get_rect()
         restart_rect.centerx = settings.WINDOW_WIDTH / 2
         restart_rect.top = 20 + settings.WINDOW_HEIGHT / 2
@@ -278,7 +278,7 @@ class Game:
 
     def show_start_at_hard(self):
         font = pygame.font.Font(self.font_bold, 30)
-        restart = font.render("Press \"2\" to start the game at Hard Level", True, (255,69,0))
+        restart = font.render("Press \"2\" to start the game at Hard Level", True, settings.ORANGE_RED)
         restart_rect = restart.get_rect()
         restart_rect.centerx = settings.WINDOW_WIDTH / 2
         restart_rect.top = 60 + settings.WINDOW_HEIGHT / 2
