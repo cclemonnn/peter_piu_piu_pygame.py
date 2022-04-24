@@ -1,6 +1,8 @@
 import pygame
 from pygame.sprite import Sprite
 
+"""explosion animation. drawn on screen when the spaceship gets hit by an antagonist"""
+
 
 class Explosion(Sprite):
     def __init__(self, x, y):

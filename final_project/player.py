@@ -5,6 +5,8 @@ from pygame.sprite import Sprite
 
 from final_project import settings
 
+"""spaceship controlled by the player"""
+
 
 class Player(Sprite):
     def __init__(self):

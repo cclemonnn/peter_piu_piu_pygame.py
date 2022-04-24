@@ -1,3 +1,6 @@
+"""calculates the location of each sprite object on screen"""
+
+
 class Viewport:
     def __init__(self):
         self.left = 0

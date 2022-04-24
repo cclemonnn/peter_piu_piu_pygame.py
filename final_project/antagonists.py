@@ -5,6 +5,8 @@ from pygame.sprite import Sprite
 
 from final_project import settings
 
+"""antagonists: meteor, ufo and monster"""
+
 
 class Meteor(Sprite):
     def __init__(self):

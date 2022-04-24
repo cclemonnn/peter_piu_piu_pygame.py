@@ -3,6 +3,8 @@ from pygame.sprite import Sprite
 
 from final_project import settings
 
+"""background of the game"""
+
 
 class Ground(Sprite):
     def __init__(self):

@@ -1,6 +1,8 @@
 import pygame
 from pygame.sprite import Sprite
 
+"""missile from spaceship"""
+
 
 class Missile(Sprite):
     def __init__(self, x, y):
