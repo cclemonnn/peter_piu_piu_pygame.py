@@ -7,15 +7,7 @@ from pygame.sprite import Sprite, Group, groupcollide
 from pygame.time import Clock
 
 import settings
-
-
-class Ground(Sprite):
-    def __init__(self):
-        super().__init__()
-        self.ground = pygame.image.load("images/ground.png").convert()
-        self.image = pygame.transform.scale(self.ground, (settings.WORLD_WIDTH, settings.WINDOW_HEIGHT))
-        self.world_rect = self.image.get_rect().copy()
-        self.world_rect.bottom = settings.WINDOW_HEIGHT
+from final_project.ground import Ground
 
 
 class Player(Sprite):
@@ -154,7 +146,7 @@ class Missile(Sprite):
         super().__init__()
         # missile image width: 17, height: 40
         self.image = pygame.image.load("images/missile.png").convert_alpha()
-        #self.image.set_colorkey((0, 0, 0))
+        # self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y
