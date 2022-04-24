@@ -190,6 +190,7 @@ class Game:
         self.player_group = Group()
         self.player_group.add(self.player)
         self.meteor_group = Group()
+        # creates 20 meteor
         for i in range(20):
             meteor = Meteor()
             self.meteor_group.add(meteor)
@@ -199,10 +200,12 @@ class Game:
         self.viewport = Viewport()
         self.viewport.update(self.player)
         self.ufo_group = Group()
+        # creates 5 ufo
         for i in range(5):
             ufo = UFO()
             self.ufo_group.add(ufo)
         self.monster_group = Group()
+        # creates 7 monsters
         for i in range(7):
             monster = Monster()
             self.monster_group.add(monster)
