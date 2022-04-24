@@ -2,7 +2,7 @@ import sys
 
 import pygame
 from pygame import key
-from pygame.sprite import Sprite, Group, groupcollide
+from pygame.sprite import Group, groupcollide
 from pygame.time import Clock
 
 import settings
@@ -11,21 +11,7 @@ from final_project.explosion import Explosion
 from final_project.ground import Ground
 from final_project.missile import Missile
 from final_project.player import Player
-
-
-class Viewport:
-    def __init__(self):
-        self.left = 0
-
-    def update(self, sprite):
-        # WINDOW_WIDTH/2 - player surface/2 = 472
-        # WORLD_WIDTH - 472 = 3624
-        if sprite.world_rect.left > 472 and sprite.world_rect.right < 3624:
-            self.left = sprite.world_rect.left - 472
-
-    def update_rect(self, group):
-        for sprite in group:
-            sprite.rect = sprite.world_rect.move(-self.left, 0)
+from final_project.viewport import Viewport
 
 
 class Game:
