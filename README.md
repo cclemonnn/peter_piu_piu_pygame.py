@@ -1,10 +1,10 @@
----------------------------
-Peter Piu Piu Pygame (PPPP)
----------------------------
+# Peter Piu Piu Pygame (PPPP)
+
 This is my final project of CPSC 4970 Python. 
 Out of the three final project options, I chose pygame, and I
 called it "Peter Piu Piu Pygame". It is a side-scrolling space
 shooting game with a world that is greater than the game screen.
+
 --------------------
 ### Game Components:
 Score and Level:
