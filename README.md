@@ -1,3 +1,4 @@
+---------------------------
 Peter Piu Piu Pygame (PPPP)
 ---------------------------
 This is my final project of CPSC 4970 Python. 
