@@ -214,6 +214,7 @@ class Game:
         self.font_arial = pygame.font.match_font('arial')
         self.font_bold = pygame.font.match_font('arial', bold=True)
         self.score = 0
+        self.game_start = False
 
     def game_loop(self):
         clock = Clock()
@@ -224,10 +225,11 @@ class Game:
             self.show_instruction()
             self.show_score()
             self.show_level()
-            if not self.player.alive():
+            if not self.game_start:
                 self.restart_game()
-                self.show_game_over()
-                self.show_restart()
+                self.show_pppp()
+                self.show_start_at_medium()
+                self.show_start_at_hard()
             pygame.display.flip()
             clock.tick(settings.FPS)
 
@@ -252,26 +254,34 @@ class Game:
         if self.score < 150:
             level = font.render("Level: Medium (Score < 150)", True, (173, 255, 47))
         else:
-            level = font.render("Level: Hard (Score >= 150)", True, (255, 165, 0))
+            level = font.render("Level: Hard (Score >= 150)", True, (255,69,0))
         level_rect = level.get_rect()
         level_rect.left = 10
         level_rect.top = 80
         self.screen.blit(level, level_rect)
 
-    def show_game_over(self):
+    def show_pppp(self):
         font = pygame.font.Font(self.font_bold, 100)
-        game_over = font.render("GAME OVER", True, (255, 0, 0))
+        game_over = font.render("PETER PIU PIU PYGAME", False, (127,255,212))
         game_over_rect = game_over.get_rect()
         game_over_rect.centerx = settings.WINDOW_WIDTH / 2
         game_over_rect.bottom = settings.WINDOW_HEIGHT / 2
         self.screen.blit(game_over, game_over_rect)
 
-    def show_restart(self):
+    def show_start_at_medium(self):
         font = pygame.font.Font(self.font_bold, 30)
-        restart = font.render("Press \"R\" to restart the game", True, (255, 215, 0))
+        restart = font.render("Press \"1\" to start the game at Medium Level", True, (173, 255, 47))
         restart_rect = restart.get_rect()
         restart_rect.centerx = settings.WINDOW_WIDTH / 2
         restart_rect.top = 20 + settings.WINDOW_HEIGHT / 2
+        self.screen.blit(restart, restart_rect)
+
+    def show_start_at_hard(self):
+        font = pygame.font.Font(self.font_bold, 30)
+        restart = font.render("Press \"2\" to start the game at Hard Level", True, (255,69,0))
+        restart_rect = restart.get_rect()
+        restart_rect.centerx = settings.WINDOW_WIDTH / 2
+        restart_rect.top = 60 + settings.WINDOW_HEIGHT / 2
         self.screen.blit(restart, restart_rect)
 
     def handle_events(self):
@@ -279,45 +289,78 @@ class Game:
             if event.type == pygame.QUIT:
                 sys.exit(0)
             if event.type == pygame.KEYDOWN:
-                if self.player.alive():
+                if self.game_start:
                     if event.key == pygame.K_SPACE:
                         self.missile_group.add(Missile(self.player.rect.centerx, self.player.rect.top))
 
     def restart_game(self):
         keys = key.get_pressed()
-        if keys[pygame.K_r]:
-            self.score = 0
-            self.player = Player()
-            self.player_group = Group()
-            self.player_group.add(self.player)
-            self.meteor_group = Group()
-            for i in range(20):
-                meteor = Meteor()
-                self.meteor_group.add(meteor)
-            self.missile_group = Group()
-            self.static_sprites = Group()
-            self.static_sprites.add(Ground())
-            self.viewport = Viewport()
-            self.viewport.update(self.player)
-            self.ufo_group = Group()
-            for i in range(5):
-                ufo = UFO()
-                self.ufo_group.add(ufo)
-            self.monster_group = Group()
-            for i in range(5):
-                monster = Monster()
-                self.monster_group.add(monster)
-            self.explosion_group = Group()
+        if keys[pygame.K_1]:
+            self.start_at_medium()
+        elif keys[pygame.K_2]:
+            self.start_at_hard()
+
+    def start_at_hard(self):
+        self.game_start = True
+        self.score = 150
+        self.player = Player()
+        self.player_group = Group()
+        self.player_group.add(self.player)
+        self.meteor_group = Group()
+        for i in range(20):
+            meteor = Meteor()
+            self.meteor_group.add(meteor)
+        self.missile_group = Group()
+        self.static_sprites = Group()
+        self.static_sprites.add(Ground())
+        self.viewport = Viewport()
+        self.viewport.update(self.player)
+        self.ufo_group = Group()
+        for i in range(5):
+            ufo = UFO()
+            self.ufo_group.add(ufo)
+        self.monster_group = Group()
+        for i in range(5):
+            monster = Monster()
+            self.monster_group.add(monster)
+        self.explosion_group = Group()
+
+    def start_at_medium(self):
+        self.game_start = True
+        self.score = 0
+        self.player = Player()
+        self.player_group = Group()
+        self.player_group.add(self.player)
+        self.meteor_group = Group()
+        for i in range(20):
+            meteor = Meteor()
+            self.meteor_group.add(meteor)
+        self.missile_group = Group()
+        self.static_sprites = Group()
+        self.static_sprites.add(Ground())
+        self.viewport = Viewport()
+        self.viewport.update(self.player)
+        self.ufo_group = Group()
+        for i in range(5):
+            ufo = UFO()
+            self.ufo_group.add(ufo)
+        self.monster_group = Group()
+        for i in range(5):
+            monster = Monster()
+            self.monster_group.add(monster)
+        self.explosion_group = Group()
 
     def update(self):
-        self.player_group.update()
+        if self.game_start:
+            self.player_group.update()
         self.ufo_group.update()
         if self.score >= 150:
             self.monster_group.update()
         self.meteor_group.update()
         self.missile_group.update()
         self.viewport.update(self.player)
-        self.check_player_collisions()
+        if self.game_start:
+            self.check_player_collisions()
         self.check_collisions()
         if not self.player.alive():
             self.explosion_group.update()
@@ -343,12 +386,15 @@ class Game:
         player_meteor_collisions = groupcollide(self.player_group, self.meteor_group, True, True)
         for collision in player_meteor_collisions:
             self.explosion_group.add(Explosion(self.player.rect.x, self.player.rect.top))
+            self.game_start = False
         player_ufo_collisions = groupcollide(self.player_group, self.ufo_group, True, True)
         for collision in player_ufo_collisions:
             self.explosion_group.add(Explosion(self.player.rect.x, self.player.rect.top))
+            self.game_start = False
         player_monster_collisions = groupcollide(self.player_group, self.monster_group, True, True)
         for collision in player_monster_collisions:
             self.explosion_group.add(Explosion(self.player.rect.x, self.player.rect.top))
+            self.game_start = False
 
     def draw(self):
         self.viewport.update_rect(self.static_sprites)
@@ -357,7 +403,8 @@ class Game:
         self.viewport.update_rect(self.ufo_group)
         self.viewport.update_rect(self.monster_group)
         self.static_sprites.draw(self.screen)
-        self.player_group.draw(self.screen)
+        if self.game_start:
+            self.player_group.draw(self.screen)
         self.explosion_group.draw(self.screen)
         self.meteor_group.draw(self.screen)
         self.ufo_group.draw(self.screen)
